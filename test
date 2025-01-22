@@ -1,0 +1,24 @@
+<td className="px-6 py-4">
+                      <button
+                        onClick={() => {
+                          setEditExpense(expense);
+                          setShowModal(true);
+                        }}
+                        className="bg-blue-600 text-white px-3 py-1 rounded-md mr-2 hover:bg-blue-700">
+                        <IconButton aria-label="edit" size="small" sx={{ color: "white" }}>
+                          <EditIcon 
+                            fontSize="inherit"
+                          />
+                        </IconButton>
+                      </button>
+                      <button
+                        onClick={() => confirmDelete(expense)}
+                        className="bg-red-600 text-white px-3 py-1 rounded-md hover:bg-red-700"
+                      >
+                        <IconButton aria-label="delete" size="small" sx={{ color: "white" }}>
+                          <DeleteIcon 
+                            fontSize="inherit"
+                          />
+                        </IconButton>
+                      </button>
+                    </td>
