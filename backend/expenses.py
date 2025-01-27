@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from main import db
 from models import Expenses
+from datetime import datetime
 
 expenses_bp = Blueprint('expenses', __name__)
 
@@ -14,10 +15,14 @@ def get_expenses():
 def add_expense():
     data = request.get_json()
     
+    now = datetime.now()
+    formatted_datetime = now.strftime("%d %B %Y, %H:%M")
+    
     if not data:
         return jsonify({"error": "No data provided"}), 400
     
-    new_expense = Expenses(category=data["category"], amount=data["amount"], short_description=data["shortDescription"])
+    # 21 January 2025, 12:30
+    new_expense = Expenses(category=data["category"], amount=data["amount"], date_and_time=formatted_datetime, short_description=data["shortDescription"])
     
     try:
         db.session.add(new_expense)
